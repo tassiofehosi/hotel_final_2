@@ -9,28 +9,7 @@
 
   <body>
 
-    <?php
-      $link = mysql_connect('localhost:3306', 'root', 'xampp');
-        if (!$link) {
-        die('Não foi possível conectar: ' . mysql_error());
-        }else{
-          echo 'Conexão bem sucedida ';
-        }
-  ?>
-
-    <?php
-
-      $db_selected = mysql_select_db('hotel', $link);
-      if (!$db_selected) {
-        die ('Não foi possivel selecionar o BD hotel : ' . mysql_error());
-    }else{
-      echo "Selecao DB 'hotel' bem sucedida"; 
-    }
-    ?> 
-
-<?php
-  mysql_close($link);
-?>
+    
 
     <div class="header">
       <div class="linha">
@@ -53,21 +32,46 @@
     </div>
 
     <?php
-
       foreach ($_GET as $key => $value) { #Alocando dinamnicamente os valores dos formularios
         # code...
         $$key = $value;
+
+        echo "$key = $value ";
       }
 
       
-       echo "Reserva realizada com sucesso!";
+   
 
-    ?><br/>   
+      $link = mysql_connect('localhost:3306', 'root', 'xampp');
+        if (!$link) {
+        die('Não foi possível conectar: ' . mysql_error());
+        }else{
+          echo 'Conexão bem sucedida ';
+        }
+
+
+      $db_selected = mysql_select_db('hotel', $link);
+      if (!$db_selected) {
+        die ('Não foi possivel selecionar o BD hotel : ' . mysql_error());
+    }else{
+      echo "Selecao DB 'hotel' bem sucedida";
+    }
+
+
+    $inserirCliente = "INSERT INTO cliente(CPF_cliente, Nome_cliente, Sexo, Email, CEP, Endereco, Telefone, Cidade, Estado, Profissao)
+                        VALUES ('$CPF', '$Nome_cliente', '$sexo', '$Email', '$CEP', '$Endereco', '$Telefone', '$Cidade', '$Estado', '$Profissao')";
+    $resultinserirCliente = mysql_query($inserirCliente);
+
+    if (!$resultinserirCliente) {
+    die('Erro ao inserir: ' . mysql_error());
+  }else if('$CPF' == mysql_query(SELECT CPF))
+
+
+  mysql_close($link);
+
+?><br/>   
 
     <a href="index.html">Voltar à página inicial</a>
-    
-</div>
-</body>
 
 
     

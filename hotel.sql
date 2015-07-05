@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Jun-2015 às 17:48
+-- Generation Time: 05-Jul-2015 às 19:22
 -- Versão do servidor: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `hotel`
 --
-CREATE DATABASE IF NOT EXISTS `hotel` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `hotel`;
 
 -- --------------------------------------------------------
 
@@ -35,6 +33,22 @@ CREATE TABLE IF NOT EXISTS `apartamento` (
   `Tipo_cama` varchar(20) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Extraindo dados da tabela `apartamento`
+--
+
+INSERT INTO `apartamento` (`Numero_apto`, `Codigo_tipo`, `Andar`, `Tipo_cama`) VALUES
+(101, 'QUADUP', 1, 'Solteiro'),
+(102, 'QUADUP', 1, 'Solteiro'),
+(103, 'QUATRI', 1, 'Solteiro'),
+(104, 'QUATRI', 1, 'Solteiro'),
+(105, 'SUCAS', 1, 'Casal'),
+(106, 'SUCAS', 1, 'Casal'),
+(107, 'SUIND', 1, 'Solteiro'),
+(108, 'SUIND', 1, 'Solteiro'),
+(201, 'SUPRE', 2, 'Casal'),
+(202, 'SUPRE', 2, 'Casal');
+
 -- --------------------------------------------------------
 
 --
@@ -44,7 +58,11 @@ CREATE TABLE IF NOT EXISTS `apartamento` (
 CREATE TABLE IF NOT EXISTS `cliente` (
   `CPF_cliente` varchar(11) COLLATE utf8_bin NOT NULL,
   `Nome_cliente` varchar(50) COLLATE utf8_bin NOT NULL,
+  `Sexo` varchar(10) COLLATE utf8_bin NOT NULL,
+  `Email` varchar(50) COLLATE utf8_bin NOT NULL,
+  `CEP` varchar(20) COLLATE utf8_bin NOT NULL,
   `Endereco` varchar(100) COLLATE utf8_bin NOT NULL,
+  `Telefone` varchar(20) COLLATE utf8_bin NOT NULL,
   `Cidade` varchar(50) COLLATE utf8_bin NOT NULL,
   `Estado` varchar(50) COLLATE utf8_bin NOT NULL,
   `Profissao` varchar(50) COLLATE utf8_bin NOT NULL
@@ -57,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 --
 
 CREATE TABLE IF NOT EXISTS `hospedagem_reserva` (
-  `Numero_registro` bigint(20) NOT NULL,
+`Numero_registro` bigint(20) NOT NULL,
   `CPF_cliente` varchar(11) COLLATE utf8_bin NOT NULL,
   `Numero_apto` bigint(10) NOT NULL,
   `Codigo_tipo` varchar(10) COLLATE utf8_bin NOT NULL,
@@ -101,9 +119,19 @@ CREATE TABLE IF NOT EXISTS `servico` (
 
 CREATE TABLE IF NOT EXISTS `tipo_apartamento` (
   `Codigo_tipo` varchar(10) COLLATE utf8_bin NOT NULL,
-  `Nome_tipo` varchar(20) COLLATE utf8_bin NOT NULL,
-  `Cama_casal` tinyint(1) NOT NULL
+  `Nome_tipo` varchar(20) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Extraindo dados da tabela `tipo_apartamento`
+--
+
+INSERT INTO `tipo_apartamento` (`Codigo_tipo`, `Nome_tipo`) VALUES
+('QUADUP', 'Quarto Duplo'),
+('QUATRI', 'Quarto Triplo'),
+('SUCAS', 'Suite Casal'),
+('SUIND', 'Suite individual'),
+('SUPRE', 'Suíte Presidencial');
 
 -- --------------------------------------------------------
 
@@ -169,6 +197,15 @@ ALTER TABLE `utilizacao_servicos`
  ADD PRIMARY KEY (`Numero_registro`,`CPF_cliente`,`Numero_apto`,`Codigo_tipo`,`Codigo_servico`,`Data_utilizacao`), ADD KEY `fk_cliente_utilizServico_idx` (`CPF_cliente`), ADD KEY `fk_hospedagem_utilizServicos_idx` (`Numero_apto`), ADD KEY `fk_hospedagem_UtilizServicos_Codigo_idx` (`Codigo_tipo`), ADD KEY `fk_Servico_utlizServico_idx` (`Codigo_servico`), ADD KEY `fk_notaFiscal_utlizServocos_idx` (`Numero_nota`);
 
 --
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `hospedagem_reserva`
+--
+ALTER TABLE `hospedagem_reserva`
+MODIFY `Numero_registro` bigint(20) NOT NULL AUTO_INCREMENT;
+--
 -- Constraints for dumped tables
 --
 
@@ -176,15 +213,15 @@ ALTER TABLE `utilizacao_servicos`
 -- Limitadores para a tabela `apartamento`
 --
 ALTER TABLE `apartamento`
-ADD CONSTRAINT `fk_tipoApto_apto` FOREIGN KEY (`Codigo_tipo`) REFERENCES `tipo_apartamento` (`Codigo_tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_tipoApto_apto` FOREIGN KEY (`Codigo_tipo`) REFERENCES `tipo_apartamento` (`Codigo_tipo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `hospedagem_reserva`
 --
 ALTER TABLE `hospedagem_reserva`
-ADD CONSTRAINT `fk_apartamentoTipo_hospedagem` FOREIGN KEY (`Codigo_tipo`) REFERENCES `apartamento` (`Codigo_tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_apartamento_hospedagem` FOREIGN KEY (`Numero_apto`) REFERENCES `apartamento` (`Numero_apto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_cliente_hospedagem` FOREIGN KEY (`CPF_cliente`) REFERENCES `cliente` (`CPF_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_apartamentoTipo_hospedagem` FOREIGN KEY (`Codigo_tipo`) REFERENCES `apartamento` (`Codigo_tipo`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_apartamento_hospedagem` FOREIGN KEY (`Numero_apto`) REFERENCES `apartamento` (`Numero_apto`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_cliente_hospedagem` FOREIGN KEY (`CPF_cliente`) REFERENCES `cliente` (`CPF_cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `utilizacao_servicos`
