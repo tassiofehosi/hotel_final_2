@@ -64,7 +64,7 @@
       // o usuário não existe, faça a inserção do mesmo;
 
           if (!$linhaCPF) {
-            die ('Não foi possivel realizar o cadastro' . mysql_error());
+            die ('Não existe reserva ativa para o CPF' . mysql_error());
           }else{
             echo "Não existe reserva ativa para o CPF: $CPF. ";
           }
