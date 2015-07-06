@@ -55,10 +55,7 @@
       }
 
 
-    $inserirCliente = "INSERT INTO cliente(CPF_cliente, Nome_cliente, Sexo, Email, CEP, Endereco, Telefone, Cidade, Estado, Profissao)
-                        VALUES ('$CPF', '$Nome_cliente', '$sexo', '$Email', '$CEP', '$Endereco', '$Telefone', '$Cidade', '$Estado', '$Profissao')";
-
-    
+   
     $consultaCPF = mysql_query("SELECT * FROM cliente WHERE CPF_cliente='$CPF'");
     $linhaCPF = mysql_num_rows($consultaCPF);
  
