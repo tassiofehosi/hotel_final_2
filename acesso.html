@@ -38,15 +38,26 @@
 			</div>
 
 		</div >
+
+
+		<div class="linha">
+			<section>
+				<h2>Entre com o CPF abaixo:</h2>
 	
 
   <form method="get" action="consultaReserva.php">
   <!--  General -->
 
     <div class="controls">
-    	CPF:<br/><input type="number" name="CPF" required="CPF"/><br/>   
-    </div><br/>
-</form><br/><br/><br/>
+    	CPF:<br/><input type="number" name="CPF" required="CPF" pattern="[0-9]+$"/><br/>   
+    </div><br/><br/>      
+
+    <input type="submit" value="Consultar"/>
+
+    
+</form><br/>
+
+
 
 		<div class="cont-extra">
 			<div class="linha">
