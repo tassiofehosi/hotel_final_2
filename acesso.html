@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
-		<title>Hotel: Faça sua reserva</title>
+		<title>Hotel: Consulta reserva</title>
 		<meta charset="UTF-8"/> 
 		<link rel="stylesheet" type="text/css" href="css/estilo1.css" />
 
@@ -28,9 +28,9 @@
 		</div>
 		<div class="linha">
 			<section>
-				<h2>Entre com seus dados abaixo:</h2>
+				<h2>Digite seu CPF:</h2>
 				
-  <form method="get" action="cadastro.php">
+  <form method="get" action="consultaReserva.php">
   <!--  General -->
 
     <div class="controls">
@@ -93,22 +93,15 @@
 
     <div class="col-1-4 col-1-4-sm">
 	<div class="controls">
-        Apartamento: <br/><select name="Numero_apto">
-			<option value="101">1º Andar - Apartamento 101</option>
-			<option value="102">1º Andar - Apartamento 102</option>
-			<option value="103">1º Andar - Apartamento 103</option>
-			<option value="104">1º Andar - Apartamento 104</option>
-			<option value="105">1º Andar - Apartamento 105</option>
-			<option value="106">1º Andar - Apartamento 106</option>
-			<option value="107">1º Andar - Apartamento 107</option>
-			<option value="108">1º Andar - Apartamento 108</option>
-			<option value="201">2º Andar - Apartamento 201</option>
-			<option value="202">2º Andar - Apartamento 102</option>
-
+        Apartamento: <br/><select name="Tipo_apartamento">
+			<option value="Quarto Duplo">Quarto Duplo</option>
+			<option value="Quarto Triplo">Quarto Triplo</option>
+			<option value="Suite Casal">Suite Casal</option>
+			<option value="Suite Individual">Suite Individual</option>
+			<option value="Suite Presidencial">Suite Presidencial</option>
 			</select>
     </div>
   </div><br>
-
 
       
             <input type="submit" value="Enviar"/>
