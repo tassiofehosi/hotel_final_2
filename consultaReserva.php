@@ -63,46 +63,44 @@
       if($linhaCPF == 0){
       // o usuário não existe, faça a inserção do mesmo;
 
-        $resultinserirCliente = mysql_query($inserirCliente);
-
-          if (!$resultinserirCliente) {
+          if (!$linhaCPF) {
             die ('Não foi possivel realizar o cadastro' . mysql_error());
           }else{
-            echo "Reserva efetuada com sucesso";
+            echo "Não existe reserva ativa para o CPF: $CPF. ";
           }
 
       }
       else
       {
       // o usuário existe;
-        echo "Cliente: $Nome_cliente já possui uma reserva ativa.  ";
+        while ($row = mysql_fetch_array($consultaCPF, MYSQL_BOTH)) {
+        printf("Cliente: %s possui uma reserva<br/>", $row["Nome_cliente"]);
+        }
       }
 
 
-      $efetivarReserva = "INSERT INTO hospedagem_reserva(CPF_cliente, Numero_apto, Data_entrada, Data_saida)
-                          VALUES ('$CPF','$Numero_apto','$Data_entrada','$Data_saida')";
-
-
-      $consultaApartamento = mysql_query("SELECT * FROM hospedagem_reserva WHERE Numero_apto='$Numero_apto'");
-      $linhaApartamento = mysql_num_rows($consultaApartamento);
+    $consultaData = mysql_query("SELECT * FROM hospedagem_reserva WHERE CPF_cliente='$CPF'");
+    $linhaData = mysql_num_rows($consultaData);
  
  
-      if($linhaApartamento == 0){
-      // o usuário não existe, faça a inserção do mesmo;
+      if($linhaData == 0){
 
-        $resultEfetivarReserva = mysql_query($efetivarReserva);
 
-          if (!$resultEfetivarReserva) {
-            die ('Não foi possivel realizar o cadastro' . mysql_error());
-          }
+            echo "Não existe reserva ativa para o CPF: $CPF. ";
+          
 
       }
       else
       {
-      // o usuário existe;
-        echo "O apartamento: $Numero_apto já está reservado";
+
+        while ($row = mysql_fetch_array($consultaData, MYSQL_BOTH)) {
+        printf("Dia da entrada: %s <br/>Dia da saída: %s", $row["Data_entrada"], $row["Data_saida"]);
+        }
+
       }
 
+
+    
 
 
   

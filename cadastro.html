@@ -35,7 +35,7 @@
 
    <!--  Details -->
    <div class="controls">
-    	CPF:<br/><input type="number" name="CPF" required="CPF"/><br/>   
+    	CPF:<br/><input type="number" name="CPF" required="CPF" pattern="[0-9]+$" /><br/>   
     </div><br/>
 
     <div class="controls">
@@ -50,7 +50,7 @@
     </div><br/>
 
     <div class="controls">
-    	E-mail:<br/><input type="text" name="Email" required="Email"/><br/>
+    	E-mail:<br/><input type="email" name="Email" required="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" /><br/>
     </div><br/>
 
     <div class="controls">
