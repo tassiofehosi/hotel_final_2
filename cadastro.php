@@ -43,7 +43,7 @@
       
    
 
-      $link = mysql_connect('localhost:3306', 'root', 'xampp');
+      $link = mysql_connect('localhost:3306', 'root', '');
         if (!$link) {
         die('Não foi possível conectar: ' . mysql_error());
         }
