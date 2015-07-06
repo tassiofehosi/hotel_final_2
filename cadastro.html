@@ -1,8 +1,8 @@
-<!DOCTYPEhtml>
+<!DOCTYPE html>
 <html lang="pt-br">
 	<head>
-		<title>Hotel paraiso das águas</title>
-		<meta charset="utf-8"/> 
+		<title>Hotel: Faça sua reserva</title>
+		<meta charset="UTF-8"/> 
 		<link rel="stylesheet" type="text/css" href="css/estilo1.css" />
 
 	</head>
@@ -18,7 +18,7 @@
 							<ul class="menu inline sem-marcador">
 								<li><a href="index.html">home</a></li>
 								<li><a href="cadastro.html">cadastro</a></li>
-								<li><a href="acesso.html">acesse sua conta</a></li>
+								<li><a href="acesso.html">consulte sua reserva</a></li>
 								<li><a href="contato.html">contato</a></li>
 							</ul>
 						</nav>
@@ -30,11 +30,11 @@
 			<section>
 				<h2>Entre com seus dados abaixo:</h2>
 				
-  <form action="">
+  <form method="get" action="cadastro.php">
   <!--  General -->
-  <div class="form-group">
-    <h2 class="heading">Dados Pessoais</h2>
+
     <div class="controls">
+<<<<<<< HEAD
       <label for="name">Nome</label><br>
       <input type="text" id="name" class="floatLabel" name="name">
       
@@ -91,73 +91,95 @@
       </div>
   </div>
   <!--  Details -->
+=======
+    	CPF:<br/><input type="number" name="CPF" required="CPF"/><br/>   
+    </div><br/>
+
+    <div class="controls">
+    	Nome:<br/><input type="text" name="Nome_cliente" required="Nome_cliente"/><br/>
+    </div><br/>
+
+    <div class="controls">
+    	Sexo:<br/><input type="radio" name="sexo" id="masc" value="Masculino" checked/>
+            <label for="masc">Masculino</label><br/>
+            <input type="radio" name="sexo" id="fem" value="Feminino"/>
+            <label for="fem">Feminino</label>
+    </div><br/>
+
+    <div class="controls">
+    	E-mail:<br/><input type="text" name="Email" required="Email"/><br/>
+    </div><br/>
+
+    <div class="controls">
+    	CEP:<br/><input type="text" name="CEP" required="CEP"/><br/>
+    </div><br/>
+
+     <div class="controls">
+    	Endereço:<br/><input type="text" name="Endereco" required="Endereco"/><br/>
+    </div><br/>
+
+        <div class="controls">
+    	Telefone:<br/><input type="text" name="Telefone" required="Telefone"/><br/>
+    </div><br/>
+
+    <div class="controls">
+    	Cidade:<br/><input type="text" name="Cidade" required="Cidade"/><br/>
+    </div><br/>
+
+    <div class="controls">
+    	Estado:<br/><input type="text" name="Estado" required="Estado"/><br/>
+    </div><br/>
+
+    <div class="controls">
+    	Profissão:<br/><input type="text" name="Profissao" required="Profissao"/><br/>
+    </div><br/>
+
+>>>>>>> 1d4046aec860468370811970cc463f956be8a150
   <div class="form-group">
     <h2 class="heading">Reserva</h2>
-    <div class="grid">
+    <div class="controls">
+        Data de entrada:<br/><input type="date" name="Data_entrada" value="<?php echo date('Y-m-d'); ?>">
+    </div><br/>      
+  </div>
+
     <div class="col-1-4 col-1-4-sm">
       <div class="controls">
-        <input type="date" id="arrive" class="floatLabel" name="arrive" value="<?php echo date('Y-m-d'); ?>">
-        <label for="arrive" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Chegada</label>
-      </div>      
+         Data de saída:<br/><input type="date" name="Data_saida" value="<?php echo date('Y-m-d'); ?>" />
+      </div><br/>       
     </div>
-    <div class="col-1-4 col-1-4-sm">
-      <div class="controls">
-        <input type="date" id="depart" class="floatLabel" name="depart" value="<?php echo date('Y-m-d'); ?>" />
-        <label for="depart" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Saída</label>
-      </div>      
-    </div>
-      </div>
+
       <br>
 
     <div class="col-1-4 col-1-4-sm">
 	<div class="controls">
-        <select name="aptos">
-			<option value="suite">Suíte</option>
-			<option value="simples">Simples</option>
-			<option value="casal">Casal</option>
-			<option value="duplo">Duplo</option>
-			<option value="triplo">Triplo</option>
-			</select>
-        <label for="aptos">Apartamento</label>
-      </div>
-  </div>
+        Apartamento: <br/><select name="Numero_apto">
+			<option value="101">1º Andar - Apartamento 101</option>
+			<option value="102">1º Andar - Apartamento 102</option>
+			<option value="103">1º Andar - Apartamento 103</option>
+			<option value="104">1º Andar - Apartamento 104</option>
+			<option value="105">1º Andar - Apartamento 105</option>
+			<option value="106">1º Andar - Apartamento 106</option>
+			<option value="107">1º Andar - Apartamento 107</option>
+			<option value="108">1º Andar - Apartamento 108</option>
+			<option value="201">2º Andar - Apartamento 201</option>
+			<option value="202">2º Andar - Apartamento 102</option>
 
-      <br><br>
-      <div class="grid">
-        <p class="info-text"><i>Escreva abaixo suas preferências, observações importantes e outros detalhes</i></p>
-        
-        <div class="controls">
-          <textarea rows="10" cols="80" name="comments" class="floatLabel" id="comments">
-          </textarea>
-          
-          </div>
-            <input type="submit" class="botao" name="enviar" value="Enviar Reserva &raquo;" />
+			</select>
+    </div>
+  </div><br>
+
+
+      
+            <input type="submit" value="Enviar"/>
       </div>  
   </div> <!-- /.form-group -->
 </form>
-				</div>
 
-				<div class="coluna col6">
-					<h4></h4>
-					<img src="img/hotel_fut.jpg" alt=""/>
-					<p>Na melhor localização de Maceió, a 50 metros da praia de Jatiúca, em meio aos principais bares, boates, restaurantes, shopping centers, agências de viagens e de automóveis.
-					</p>
-				</div>
-				<div class="coluna col6">
-					<h4></h4>
-					<img src="img/1251409655640_f.jpg" alt=""/>
-					<p>Na melhor localização de Maceió, a 50 metros da praia de Jatiúca, em meio aos principais bares, boates, restaurantes, shopping centers, agências de viagens e de automóveis.
-					</p>
-				</div>
-				
-				
-			</section>
-		</div>
 		<div class="cont-extra">
 			<div class="linha">
 				<div class="coluna col6">
 					<section>
-						<h1> Opinião dos clientes </h1>
+						<h2> Opinião dos clientes </h2>
 						<p> É nosso prazer e privilégio compartilhar as belezas de nosso Estado com nossos visitantes e proporcionar-lhes todo conforto e comodidade de nossos serviços diferenciados. Superar e satisfazer suas expectativas através da conquista é a nossa missão, com o objetivo de que ano após ano você retorne para renovar essa gloriosa experiência.À beira-mar do maravilhoso mar de Maceió, localizado em um dos mais belos cartões postais da cidade, a praia da Ponta Verde, o hotel está nas proximidades das melhores opções de lazer da cidade.</p><p><em></em></p>
 					</section>
 			</div>
