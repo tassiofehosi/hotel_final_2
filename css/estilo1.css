@@ -203,3 +203,15 @@ ul.noticias li p a{
 			}
 		}
 	}
+#login{
+	windth: 400px;
+	margin: 0 auto;
+	position: relative;
+	top 250px;
+}
+#login label{
+	display: block;
+}
+.lgn{
+	border:none;
+}

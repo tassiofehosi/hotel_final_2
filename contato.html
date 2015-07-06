@@ -1,4 +1,8 @@
 <!DOCTYPEhtml>
+<?php
+ include('connect_BD.php');
+
+?>
 <html lang="pt-br">
 	<head>
 		<title>Hotel paraiso das águas</title>
@@ -44,16 +48,16 @@
 					</ul>
 				</div>
 				<div class="coluna col7">
-					<h2>Envie sua mensagem</h2>
-					<form action="">
-						<label for="nome">Seu nome:</label>
-						<input type="text" name="nome" id="nome"/>
-						<label for="email">Seu Email:</label>
-						<input type="text" name="email" id="email"/>
-						<label for="assunto">Assunto:</label>
-						<input type="text" name="assunto" id="assunto"/>
+					<h2>Envie sua mensagem para dúvidas, críticas, sugestões.</h2>
+					<form method="post" action="contatoBD.php" style="text-align:left">
+						<label for="nome">Seu Nome:</label><br>
+						<input type="text" name="nome" id="nome"/><br><br>
+						<label for="email">Seu Email:</label><br>
+						<input type="text" name="email" id="email"/><br><br>
+						<label for="assunto">Assunto:</label><br>
+						<input type="text" name="assunto" id="assunto"/><br><br>
 						<label for="mensagem">Mensagem:</label>
-						<textarea name="mensagem" id="mensagem"></textarea>
+						<textarea rows="10" cols="70" name="mensagem" id="mensagem"></textarea>
 						<input type="submit" class="botao" name="enviar" value="Enviar mensagem &raquo;" />
 					</form>
 				</div>
