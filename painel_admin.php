@@ -10,11 +10,17 @@ if(!isset($_SESSION['user_session']) && !isset($_SESSION['pwd_session'])){
 <head>
 	<title>admin</title>
 	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="css/estilo2.css">
 
 </head>
 <body>
-<h3>BEM VINDO AO SISTEMA DE MONITORAMENTO DE RESERVAS DO HOTEL PARAISO DA ÁGUAS</h3>
-<table width="100%" border="1">
+	<header>
+		<div class="header"><h3>BEM VINDO AO SISTEMA DE MONITORAMENTO DE RESERVAS DO HOTEL PARAISO DA ÁGUAS</h3>
+		<a href="?go=sair">SAIR</a>
+		</div><br><br>
+	</header>
+<table class="tab_cad" width="100%" border="1">
+	<tr><h3>tabela de cadastro de clientes:</h3></tr>
 			<tr>
 				<td><b>cpf_cliente</b></td>
 				<td><b>Nome_cliente</b></td>
@@ -50,14 +56,47 @@ if(!isset($_SESSION['user_session']) && !isset($_SESSION['pwd_session'])){
 				<td align="center"><a href="deletar.php?CPF_cliente=<?php echo $linha->CPF_cliente ?>"><img src="img/eliminar.gif"></a></td>
 
 			</tr>
+
 		<?php
 		}
 		?>
+		</table>
+		<!--fim da tabela de clientes-->
+		<!--inicio da tabela de reservas-->
+		<table class="tab_cad" width="100%" border="1">
+	<tr><h3>relação das reservas dos apartamentos:</h3></tr>
+			<tr>
+				<td><b>Numero_registro</b></td>
+				<td><b>CPF_cliente</b></td>
+				<td><b>Numero_apto</b></td>
+				<td><b>Data_entrada</b></td>
+				<td><b>Data_saida</b></td>
+				<td align="center"><b>Editar</b></td>
+				<td align="center"><b>Deletar</b></td>
+			</tr>
+			<?php
+				$query = mysql_query("SELECT * FROM hospedagem_reserva ORDER BY Data_entrada") or die(mysql_error());
+				while ($linha = mysql_fetch_object($query)) {
+					
+				
+			?>
+			<tr>
+				<td><?php echo $linha->Numero_registro ?></td>
+				<td><?php echo $linha->CPF_cliente ?></td>
+				<td><?php echo $linha->Numero_apto ?></td>
+				<td><?php echo $linha->Data_entrada ?></td>
+				<td><?php echo $linha->Data_saida ?></td>
+				<td align="center"><img src="img/editar.gif"></td>
+				<td align="center"><a href="deletar.php?CPF_cliente=<?php echo $linha->CPF_cliente ?>"><img src="img/eliminar.gif"></a></td>
 
-<a href="?go=sair">SAIR<br><br></a>
+			</tr>
 
-
-</body>
+		<?php
+		}
+		?>
+		</table>
+		<!--fim da tabela de reservas-->
+	</body>
 </html>
 <?php
 	}

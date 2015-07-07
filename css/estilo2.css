@@ -44,3 +44,25 @@ body{
 	border:none;
 	margin-top: 250px;
 }
+a:link, a:active, a:visited{
+	color: #315e8a;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
+.header{
+	background: #ccffff;
+	padding: 10px;
+}
+.tab_cad{
+	height: 35px;
+	width: auto;
+	border: none;
+	border-radius: 5px;
+	background-color: #EEE;
+	padding: 4px;
+}
+.tab_cad:hover{
+	background-color: #CCC;
+}
