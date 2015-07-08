@@ -15,7 +15,7 @@ if(!isset($_SESSION['user_session']) && !isset($_SESSION['pwd_session'])){
 </head>
 <body>
 	<header>
-		<div class="header"><h3>BEM VINDO AO SISTEMA DE MONITORAMENTO DE RESERVAS DO HOTEL PARAISO DA ÁGUAS</h3>
+		<div class="header"><h3>BEM VINDO AO SISTEMA DE GERENCIAMENTO DE RESERVAS DO HOTEL PARAISO DA ÁGUAS</h3>
 		<a href="?go=sair">SAIR</a>
 		</div><br><br>
 	</header>
@@ -66,7 +66,6 @@ if(!isset($_SESSION['user_session']) && !isset($_SESSION['pwd_session'])){
 				<td><b>Cidade</b></td>
 				<td><b>Estado</b></td>
 				<td><b>Profissao</b></td>
-				<td align="center"><b>Editar</b></td>
 				<td align="center"><b>Deletar</b></td>
 			</tr>
 			<?php
@@ -86,7 +85,6 @@ if(!isset($_SESSION['user_session']) && !isset($_SESSION['pwd_session'])){
 				<td><?php echo $linha->Cidade ?></td>
 				<td><?php echo $linha->Estado ?></td>
 				<td><?php echo $linha->Profissao ?></td>
-				<td align="center"><img src="img/editar.gif"></td>
 				<td align="center"><a href="deletar.php?CPF_cliente=<?php echo $linha->CPF_cliente ?>"><img src="img/eliminar.gif"></a></td>
 
 			</tr>
@@ -105,7 +103,6 @@ if(!isset($_SESSION['user_session']) && !isset($_SESSION['pwd_session'])){
 				<td><b>Numero_apto</b></td>
 				<td><b>Data_entrada</b></td>
 				<td><b>Data_saida</b></td>
-				<td align="center"><b>Editar</b></td>
 				<td align="center"><b>Deletar</b></td>
 			</tr>
 			<?php
@@ -119,7 +116,6 @@ if(!isset($_SESSION['user_session']) && !isset($_SESSION['pwd_session'])){
 				<td><?php echo $linha->Numero_apto ?></td>
 				<td><?php echo $linha->Data_entrada ?></td>
 				<td><?php echo $linha->Data_saida ?></td>
-				<td align="center"><img src="img/editar.gif"></td>
 				<td align="center"><a href="deletar.php?CPF_cliente=<?php echo $linha->CPF_cliente ?>"><img src="img/eliminar.gif"></a></td>
 
 			</tr>

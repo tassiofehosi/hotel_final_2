@@ -9,10 +9,13 @@ include('connect_BD.php');
 </head>
 <body>
 	<div ID="cadastro">
+		<header>
+		<div class="header"><h3>SISTEMA DE GERENCIAMENTO DE RESERVAS DO HOTEL PARAISO DA ÁGUAS</h3>
+		<a href="index.php">LOGIN &raquo;</a><!--<a href="?go=sair">SAIR</a>-->
+		</div>
+	</header>
 		<form method="post" action="?go=cadastrar">
 			<table id="cad_table">
-				<tr><h2>SISTEMA DE MONITORAMENTO DE RESERVAS DO HOTEL</h2></tr>
-				<tr>
 					<td>Nome:</td>
 					<td><input type="text" name="nome" id="nome" class="txt"/></td>
 				</tr>
@@ -35,15 +38,6 @@ include('connect_BD.php');
 			</table>
 		</form>
 	</div>
-		<header>
-			<div class="coluna col8">
-						<nav>
-							<ul class="menu inline sem-marcador">
-								<li><a href="index.php">LOGIN</a></li>
-							</ul>
-						</nav>
-					</div>
-				</header>
 
 </body>
 </html>

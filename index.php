@@ -11,11 +11,14 @@ if(!isset($_SESSION['user_session']) && !isset($_SESSION['pwd_session'])){
 	<link rel="stylesheet" type="text/css" href="css/estilo2.css">
 </head>
 <body>
+	<header>
+		<div class="header"><h3>SISTEMA DE GERENCIAMENTO DE RESERVAS DO HOTEL PARAISO DA ÁGUAS</h3>
+		<a href="?go=sair">SAIR &raquo;</a>
+		</div>
+	</header>
 	<div ID="cadastro">
 		<form method="post" action="?go=logar">
 			<table id="login_table">
-				<tr><h2>SISTEMA DE MONITORAMENTO DE RESERVAS DO HOTEL</h2></tr>
-				<tr>
 					<td>Usuário:</td>
 					<td><input type="text" name="user" id="user" class="txt" maxlength="15"/></td>
 				</tr>
@@ -62,4 +65,11 @@ if (@$_GET['go'] =='logar'){
 		}
 	}	
 }
+?>
+<?php
+	if(@$_GET['go'] == 'sair'){
+		unset($_SESSION['user_session']);
+		unset($_SESSION['pwd_session']);
+		echo"<meta http-equiv='refresh' content='0, url=index.html'>";
+	}
 ?>
