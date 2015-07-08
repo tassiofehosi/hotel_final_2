@@ -42,7 +42,7 @@ $pdf->AddPage();
 $pdf->SetFont('Times','',12);
 
 // Carrega os dados do BD
-$pdo = new PDO("mysql:host=localhost;dbname=hotel", "root", "xampp");
+$pdo = new PDO("mysql:host=localhost;dbname=hotel", "root", "");
 if(!$pdo){
    die('Erro ao criar a conexão com BD');
 }

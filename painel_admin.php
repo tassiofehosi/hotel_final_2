@@ -19,8 +19,42 @@ if(!isset($_SESSION['user_session']) && !isset($_SESSION['pwd_session'])){
 		<a href="?go=sair">SAIR</a>
 		</div><br><br>
 	</header>
+			<!--inicio das mensagens da pág. contato-->
+		<table class="tab_cad" width="100%" border="1">
+	<tr><h3>Mensagens recebidas da pág. contato:</h3></tr>
+			<tr>
+				<td><b>Registro Nr.</b></td>
+				<td><b>Nome do contato</b></td>
+				<td><b>Email</b></td>
+				<td><b>Assunto</b></td>
+				<td><b>Mensagem</b></td>
+				<td><b>Data</b></td>
+				<td align="center"><b>Deletar</b></td>
+			</tr>
+			<?php
+				$query = mysql_query("SELECT * FROM contato ORDER BY Data") or die(mysql_error());
+				while ($linha = mysql_fetch_object($query)) {
+									
+			?>
+			<tr>
+				<td><?php echo $linha->Reg_Nr ?></td>
+				<td><?php echo $linha->Nome ?></td>
+				<td><?php echo $linha->Email ?></td>
+				<td><?php echo $linha->Assunto ?></td>
+				<td><?php echo $linha->Mensagem ?></td>
+				<td><?php echo $linha->Data ?></td>
+				<td align="center"><a href="deletar_msg.php?Reg_Nr=<?php echo $linha->Reg_Nr ?>"><img src="img/eliminar.gif"></a></td>
+
+			</tr>
+
+		<?php
+		}
+		?>
+		</table>
+	<!--fim das mensagens da pág. contato-->
+	<!--inicio da tabela de clientes-->
 <table class="tab_cad" width="100%" border="1">
-	<tr><h3>tabela de cadastro de clientes:</h3></tr>
+	<tr><h3>Tabela de cadastro de clientes:</h3></tr>
 			<tr>
 				<td><b>cpf_cliente</b></td>
 				<td><b>Nome_cliente</b></td>
@@ -64,7 +98,7 @@ if(!isset($_SESSION['user_session']) && !isset($_SESSION['pwd_session'])){
 		<!--fim da tabela de clientes-->
 		<!--inicio da tabela de reservas-->
 		<table class="tab_cad" width="100%" border="1">
-	<tr><h3>relação das reservas dos apartamentos:</h3></tr>
+	<tr><h3>Relação das reservas dos apartamentos:</h3></tr>
 			<tr>
 				<td><b>Numero_registro</b></td>
 				<td><b>CPF_cliente</b></td>
@@ -77,8 +111,7 @@ if(!isset($_SESSION['user_session']) && !isset($_SESSION['pwd_session'])){
 			<?php
 				$query = mysql_query("SELECT * FROM hospedagem_reserva ORDER BY Data_entrada") or die(mysql_error());
 				while ($linha = mysql_fetch_object($query)) {
-					
-				
+									
 			?>
 			<tr>
 				<td><?php echo $linha->Numero_registro ?></td>
@@ -96,6 +129,10 @@ if(!isset($_SESSION['user_session']) && !isset($_SESSION['pwd_session'])){
 		?>
 		</table>
 		<!--fim da tabela de reservas-->
+		<ul class="menu inline sem-marcador">
+			<h3>Clique aqui para gerar um PDF da relação de reservas<li><a href="relatoriofpdf.php">gerar PDF &raquo;</a></li></h3>
+			
+		</ul>
 	</body>
 </html>
 <?php

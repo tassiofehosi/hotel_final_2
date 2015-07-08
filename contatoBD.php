@@ -8,9 +8,13 @@ $data = date('Y-m-d');
 $sql = "INSERT INTO contato(Nome, Email, Assunto, Mensagem, Data) VALUES('$nome', '$email', '$assunto', '$mensagem', '$data')";
 
 if (mysql_query($sql)) {
-	header('Location: contato.html?resultado=ok');
+	echo "<script>alert('Mensagem enviada com sucesso! Obrigado!.');</script>";
+	echo "<meta http-equiv='refresh' content='0, url=contato.html'>";
 }else{
-	header('Location:contato.html?resultado=falso');
+	echo "<script>alert('Erro de envio da mensagem! Tente mais tarde.');</script>";
+	echo "<meta http-equiv='refresh' content='0, url=contato.html'>";
 }
 
 ?>
+
+
