@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 07-Jul-2015 às 08:02
+-- Generation Time: 08-Jul-2015 às 06:34
 -- Versão do servidor: 5.6.15-log
 -- PHP Version: 5.4.24
 
@@ -74,10 +74,33 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 --
 
 INSERT INTO `cliente` (`CPF_cliente`, `Nome_cliente`, `Sexo`, `Email`, `CEP`, `Endereco`, `Telefone`, `Cidade`, `Estado`, `Profissao`) VALUES
-('0123456789', 'wellingto teles dos santos', 'Masculino', 'wteless@ig.com.br', '57061-410', 'av. da paz, s/n', '3221-4856', 'MaceiÃ³', 'AL', 'TÃ©c. em Eletronica'),
 ('0987654321', 'jose da silva', 'Masculino', 'jose@msn.com', '57062-300', 'Rua sem saida, 100 ', '3221-2121', 'MaceiÃ³', 'AL', 'Vendedor'),
-('1122334455', 'neymar perna de pau junior', 'Masculino', 'neyma@xn--bara-2oa.com', '60000-100', 'av.santos, S/N', '3221-5000', 'Santos', 'SÃ£o Paulo', 'Jogador de pelada'),
 ('9988776655', 'Fred Cone', 'Masculino', 'fred@flu.com', '69000-123', 'Copacabana', '9876-0011', 'Rio de Janeiro', 'RJ', 'jogador');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `contato`
+--
+
+CREATE TABLE IF NOT EXISTS `contato` (
+  `Reg_Nr` int(11) NOT NULL AUTO_INCREMENT,
+  `Nome` varchar(30) NOT NULL,
+  `Email` varchar(15) NOT NULL,
+  `Assunto` varchar(30) NOT NULL,
+  `Mensagem` varchar(250) NOT NULL,
+  `Data` date NOT NULL,
+  PRIMARY KEY (`Reg_Nr`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Extraindo dados da tabela `contato`
+--
+
+INSERT INTO `contato` (`Reg_Nr`, `Nome`, `Email`, `Assunto`, `Mensagem`, `Data`) VALUES
+(4, 'Wellington Teles dos Santos', 'wteless@msn.com', 'Teste de envio 1', 'testando envio de mensagem. OK!', '2015-07-08'),
+(5, 'JosÃ© da Silva', 'jose@msn.com', 'teste 2', 'testando envio 2', '2015-07-08'),
+(6, 'Maria JoÃ£o', 'Maria@msn.com', 'teste3', 'teste teste teste', '2015-07-08');
 
 -- --------------------------------------------------------
 
@@ -92,14 +115,15 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   `usuario` varchar(15) NOT NULL,
   `senha` varchar(15) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Extraindo dados da tabela `funcionario`
 --
 
 INSERT INTO `funcionario` (`user_id`, `nome`, `email`, `usuario`, `senha`) VALUES
-(1, 'Wellington Teles dos Santos', 'wteless@msn.com', 'wteless', '123456');
+(1, 'Wellington Teles dos Santos', 'wteless@msn.com', 'wteless', '123456'),
+(8, 'tassio', 'tassio@gmail.co', 'tassio', '123456');
 
 -- --------------------------------------------------------
 
@@ -123,9 +147,7 @@ CREATE TABLE IF NOT EXISTS `hospedagem_reserva` (
 --
 
 INSERT INTO `hospedagem_reserva` (`Numero_registro`, `CPF_cliente`, `Numero_apto`, `Data_entrada`, `Data_saida`) VALUES
-(4, '0123456789', 101, '2015-08-01', '2015-08-01'),
 (5, '0987654321', 102, '2015-08-10', '2015-08-12'),
-(6, '1122334455', 201, '0000-00-00', '0000-00-00'),
 (7, '9988776655', 202, '2015-12-12', '2015-12-20');
 
 --
